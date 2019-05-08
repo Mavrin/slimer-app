@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="src/renderer/app.css" />
+  </head>
+  <body>
+    <form id="form">
+      <label>
+        Choose file for convert:
+        <input id="inputFile" type="file" />
+      </label>
+      <label>
+        Choose output directory:
+        <input id="outputDir" webkitdirectory type="file" />
+      </label>
+      <button type="submit">Convert</button>
+    </form>
+    <div id="message"></div>
+    <script>
+      // You can also require other files to run in this process
+      require("./src/renderer/app.js");
+    </script>
+  </body>
+</html>

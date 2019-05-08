@@ -1,0 +1,39 @@
+{
+  "name": "rubberapp",
+  "version": "1.0.0",
+  "description": "GUI for https://ffmpeg.org. Convert your video for the WEB",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js",
+    "test": "jest",
+    "format": "prettier --write \"**/*.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mavrin/rubberapp.git"
+  },
+  "keywords": [
+    "ffmpeg",
+    "video",
+    "converter",
+    "optimize"
+  ],
+  "author": "Konstantin Krivlenia <krivlenia@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mavrin/rubberapp/issues"
+  },
+  "homepage": "https://github.com/Mavrin/rubberapp#readme",
+  "devDependencies": {
+    "electron": "^4.1.0",
+    "husky": "^1.3.1",
+    "jest": "^24.5.0",
+    "prettier": "^1.16.4",
+    "pretty-quick": "^1.10.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
