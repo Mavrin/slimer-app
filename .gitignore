@@ -63,3 +63,5 @@ typings/
 .idea
 
 *.mp4
+
+ffmpeg-tmp
