@@ -65,3 +65,6 @@ typings/
 *.mp4
 
 ffmpeg-tmp
+icon-dist
+dist
+package

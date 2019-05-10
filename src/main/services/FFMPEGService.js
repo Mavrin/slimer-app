@@ -1,19 +1,37 @@
 const { spawn } = require("child_process");
 const path = require("path");
+const fs = require("fs");
 const execPromise = require("../utils/execPromise");
+
+function getWithExt(name) {
+  return process.platform === "win32" ? `${name}.exe` : name;
+}
+
+function getFfmpegPath() {
+  //console.log(fs.readdirSync(path.join(__dirname, '../../../../')));
+  const internalFfmpeg = path.join(
+    __dirname,
+    "../../../../",
+    "app.asar.unpacked/ffmpeg/bin",
+    getWithExt("ffmpeg")
+  );
+  return internalFfmpeg;
+}
+
 class FFMPEGService {
-  constructor({ pathToBin }) {
+  constructor({ pathToBin = getFfmpegPath() }) {
     this.pathToBin = pathToBin;
   }
 
   async getVersion() {
-    const result = await execPromise("ffmpeg -version");
+    const result = await execPromise(`${this.pathToBin} -version`);
     return result;
   }
   async convert(file, outputDir = "output/") {
     const { name } = path.parse(file);
     return new Promise((resolve, reject) => {
-      const ffmpeg = spawn("ffmpeg", [
+      const ffmpeg = spawn(this.pathToBin, [
+        "-y",
         "-i",
         file,
         "-map_metadata",
@@ -36,20 +54,8 @@ class FFMPEGService {
         "scale=trunc(iw/2)*2:trunc(ih/2)*2",
         `${outputDir}/${name}.mp4`
       ]);
-      ffmpeg.stdout.on("data", data => {
-        console.log(`stdout: ${data}`);
-      });
 
-      ffmpeg.stderr.on("data", data => {
-        console.log(`stderr: ${data}`);
-      });
-      return ffmpeg.on("close", code => {
-        if (code) {
-          return reject(code);
-        }
-        console.log(`child process exited with code ${code}`);
-        resolve();
-      });
+      return resolve(ffmpeg);
     });
   }
 }
