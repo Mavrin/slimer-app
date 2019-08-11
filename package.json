@@ -13,7 +13,8 @@
     "test": "jest",
     "icon-gen": "icon-gen -i src/icon.svg -o ./icon-dist -r",
     "format": "prettier --write \"**/*.js\"",
-    "publishSite": "node ./tasks/publishSite.js"
+    "publishSite": "node ./tasks/publishSite.js",
+    "archive": "cd package && zip -r ./Rubberapp.zip ./Rubberapp-darwin-x64"
   },
   "repository": {
     "type": "git",

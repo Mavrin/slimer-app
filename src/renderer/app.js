@@ -2,10 +2,26 @@ const { FFMPEGService } = require("../main/services/FFMPEGService");
 
 // const ffmpegService = new FFMPEGService({pathToBin: 'ffmpeg'});
 const ffmpegService = new FFMPEGService({});
+const step1 = document.querySelectorAll(`.step-1`);
+const step2 = document.querySelectorAll(`.step-2`);
+const stepFinal = document.querySelectorAll(`.step-final`);
+const fileInput = document.querySelector("#inputFile");
+
+fileInput.addEventListener("change", () => {
+  step1.forEach(el => el.classList.add("hidden"));
+  step2.forEach(el => el.classList.remove("hidden"));
+});
 
 ffmpegService.getVersion().then(console.log, console.error);
 
 const message = document.getElementById("message");
+
+document.querySelector(`#new`).addEventListener("click", () => {
+  message.innerHTML = ``;
+  step1.forEach(el => el.classList.remove("hidden"));
+  step2.forEach(el => el.classList.add("hidden"));
+  stepFinal.forEach(el => el.classList.add("hidden"));
+});
 
 document.getElementById("form").addEventListener("submit", async e => {
   e.preventDefault();
@@ -18,6 +34,7 @@ document.getElementById("form").addEventListener("submit", async e => {
     return;
   }
   const outputDir = e.currentTarget.querySelector("#outputDir").files[0].path;
+  step2.forEach(el => el.classList.add("hidden"));
   ffmpegService
     .convert(file, outputDir)
     .then(ffmpeg => {
@@ -43,5 +60,8 @@ document.getElementById("form").addEventListener("submit", async e => {
     .then(() => (message.innerHTML = "video was converted"))
     .catch(e => {
       message.innerHTML = `Could not convert videos ${e}`;
+    })
+    .finally(() => {
+      stepFinal.forEach(el => el.classList.remove("hidden"));
     });
 });

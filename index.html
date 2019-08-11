@@ -6,18 +6,44 @@
     <link rel="stylesheet" href="src/renderer/app.css" />
   </head>
   <body>
-    <form id="form">
-      <label>
-        Choose file for convert:
-        <input id="inputFile" type="file" />
-      </label>
-      <label>
-        Choose output directory:
-        <input id="outputDir" webkitdirectory type="file" />
-      </label>
-      <button type="submit">Convert</button>
-    </form>
-    <div id="message"></div>
+    <div class="app">
+      <header>
+        <img src="src/icon.svg" alt="" />
+        <div class="step-1">
+          <h1>Welcome to RubberApp</h1>
+          <div class="description">
+            Compress and prepare videos for the web
+          </div>
+        </div>
+        <div class="step-2 hidden">
+          <h1>Settings</h1>
+        </div>
+      </header>
+      <main>
+        <form id="form">
+          <div class="step-1">
+            <label class="button choose-files">
+              Select file &hellip;
+              <input class="input-file" id="inputFile" type="file" />
+            </label>
+          </div>
+          <div class="step-2 hidden">
+            <label class="button choose-directory">
+              Output directory &hellip;
+              <input id="outputDir" webkitdirectory type="file" />
+            </label>
+            <div class="convert">
+              <button class="button" type="submit">Convert</button>
+            </div>
+          </div>
+        </form>
+        <div class="step-final hidden">
+          <button id="new" class="button" type="button">Convert more</button>
+        </div>
+        <div id="message"></div>
+      </main>
+      <footer></footer>
+    </div>
     <script>
       // You can also require other files to run in this process
       require("./src/renderer/app.js");
