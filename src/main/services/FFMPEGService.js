@@ -9,12 +9,15 @@ function getWithExt(name) {
 
 function getFfmpegPath() {
   //console.log(fs.readdirSync(path.join(__dirname, '../../../../')));
-  const internalFfmpeg = path.join(
-    __dirname,
-    "../../../../",
-    "app.asar.unpacked/ffmpeg/bin",
-    getWithExt("ffmpeg")
-  );
+  const pathTo = process.env.PATH_TO_FFMPEG;
+  const internalFfmpeg = pathTo
+    ? pathTo
+    : path.join(
+        __dirname,
+        "../../../../",
+        "app.asar.unpacked/ffmpeg/bin",
+        getWithExt("ffmpeg")
+      );
   return internalFfmpeg;
 }
 

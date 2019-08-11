@@ -4,7 +4,7 @@
   "description": "GUI for https://ffmpeg.org. Convert your video for the WEB",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js",
+    "start": "DEBUG=true  PATH_TO_FFMPEG=ffmpeg electron main.js",
     "download-ffmpeg": "./tasks/ffmpeg-dl/dl.sh",
     "extract-ffmpeg": "./tasks/ffmpeg-dl/extract.sh",
     "copy-ffmpeg": "rm -rf dist/ffmpeg && mkdir -p dist/ffmpeg/bin && cp ffmpeg-tmp/binaries/${PLATFORM}_${ARCH}/bin/ffmpeg dist/ffmpeg/bin",
