@@ -1,4 +1,5 @@
 const { FFMPEGService } = require("../main/services/FFMPEGService");
+const { initProgress } = require("./progress");
 
 // const ffmpegService = new FFMPEGService({pathToBin: 'ffmpeg'});
 const ffmpegService = new FFMPEGService({});
@@ -35,18 +36,19 @@ document.getElementById("form").addEventListener("submit", async e => {
   }
   const outputDir = e.currentTarget.querySelector("#outputDir").files[0].path;
   step2.forEach(el => el.classList.add("hidden"));
+  const progress = initProgress();
   ffmpegService
     .convert(file, outputDir)
     .then(ffmpeg => {
       return new Promise((resolve, reject) => {
-        ffmpeg.stdout.on("data", data => {
+        /* ffmpeg.stdout.on("data", data => {
           console.log(`stdout: ${data}`);
           message.innerHTML = data;
-        });
+        });*/
 
         ffmpeg.stderr.on("data", data => {
-          console.log(`stderr: ${data}`);
-          message.innerHTML = data;
+          progress.update(data);
+          message.innerHTML = progress.getCurrentProgress() + "%";
         });
         return ffmpeg.on("close", code => {
           if (code) {
