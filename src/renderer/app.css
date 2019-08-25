@@ -1,9 +1,12 @@
 html,
-body {
+body,
+#container {
   height: 100%;
 }
-body {
+#container {
   display: grid;
+}
+body {
   background: #edf2f4;
 }
 

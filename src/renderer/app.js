@@ -1,6 +1,5 @@
 const { FFMPEGService } = require("../main/services/FFMPEGService");
 const { initProgress } = require("./progress");
-require("./app.css");
 // const ffmpegService = new FFMPEGService({pathToBin: 'ffmpeg'});
 const ffmpegService = new FFMPEGService({});
 const step1 = document.querySelectorAll(`.step-1`);
