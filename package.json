@@ -4,7 +4,8 @@
   "description": "GUI for https://ffmpeg.org. Convert your video for the WEB",
   "main": "main.js",
   "scripts": {
-    "start": "DEBUG=true  PATH_TO_FFMPEG=ffmpeg electron main.js",
+    "build": "webpack --mode=development",
+    "start": "DEBUG=true  PATH_TO_FFMPEG=ffmpeg electron dist/main.js",
     "download-ffmpeg": "./tasks/ffmpeg-dl/dl.sh",
     "extract-ffmpeg": "./tasks/ffmpeg-dl/extract.sh",
     "copy-ffmpeg": "rm -rf dist/ffmpeg && mkdir -p dist/ffmpeg/bin && cp ffmpeg-tmp/binaries/${PLATFORM}_${ARCH}/bin/ffmpeg dist/ffmpeg/bin",
@@ -33,14 +34,20 @@
   },
   "homepage": "https://github.com/Mavrin/rubberapp#readme",
   "devDependencies": {
+    "copy-webpack-plugin": "^5.0.4",
+    "css-loader": "^3.2.0",
     "electron": "^4.1.0",
     "electron-packager": "^13.1.1",
     "gh-pages": "^2.0.1",
     "husky": "^1.3.1",
     "icon-gen": "^2.0.0",
     "jest": "^24.5.0",
+    "mini-css-extract-plugin": "^0.8.0",
     "prettier": "^1.16.4",
-    "pretty-quick": "^1.10.0"
+    "pretty-quick": "^1.10.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-node-externals": "^1.7.2"
   },
   "husky": {
     "hooks": {

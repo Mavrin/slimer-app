@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-cp -r ./src ./dist
 cp -r ./node_modules ./dist
 cp ./package.json ./dist
 cp ./main.js ./dist
