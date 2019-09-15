@@ -15,7 +15,9 @@
     "icon-gen": "icon-gen -i src/icon.svg -o ./icon-dist -r",
     "format": "prettier --write \"**/*.js\"",
     "publishSite": "node ./tasks/publishSite.js",
-    "archive": "cd package && zip -r ./Rubberapp.zip ./Rubberapp-darwin-x64"
+    "archive": "cd package && zip -r ./Rubberapp.zip ./Rubberapp-darwin-x64",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -39,6 +41,10 @@
     "@babel/plugin-transform-modules-commonjs": "^7.5.0",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.2.0",
+    "@storybook/addon-links": "^5.2.0",
+    "@storybook/addons": "^5.2.0",
+    "@storybook/react": "^5.2.0",
     "babel-loader": "^8.0.6",
     "classnames": "^2.2.6",
     "copy-webpack-plugin": "^5.0.4",
@@ -63,5 +69,6 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
-  }
+  },
+  "dependencies": {}
 }

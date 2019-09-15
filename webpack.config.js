@@ -44,10 +44,6 @@ module.exports = {
                 ],
                 require.resolve(`@babel/preset-react`)
               ],
-              plugins: [
-                require.resolve(`@babel/plugin-proposal-dynamic-import`),
-                require.resolve(`@babel/plugin-transform-modules-commonjs`)
-              ],
               cacheDirectory: true
             }
           }
