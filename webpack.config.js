@@ -11,7 +11,7 @@ module.exports = {
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "./dist/assets"),
-    publicPath: "/assets/"
+    publicPath: "assets/"
   },
   node: {
     __dirname: false,
@@ -56,16 +56,16 @@ module.exports = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"]
+      },
+      {
+        test: /\.svg$/,
+        use: ["file-loader"]
       }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({}),
     new CopyPlugin([
-      {
-        from: "./src/icon.svg",
-        to: "../src/"
-      },
       {
         from: "./index.html",
         to: "../"

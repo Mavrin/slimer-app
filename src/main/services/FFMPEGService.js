@@ -8,7 +8,6 @@ function getWithExt(name) {
 }
 
 function getFfmpegPath() {
-  //console.log(fs.readdirSync(path.join(__dirname, '../../../../')));
   const pathTo = process.env.PATH_TO_FFMPEG;
   const internalFfmpeg = pathTo
     ? pathTo
@@ -27,12 +26,11 @@ class FFMPEGService {
   }
 
   async getVersion() {
-    const result = await execPromise(`${this.pathToBin} -version`);
-    return result;
+    return await execPromise(`${this.pathToBin} -version`);
   }
   async convert(file, outputDir = "output/") {
     const { name } = path.parse(file);
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       const ffmpeg = spawn(this.pathToBin, [
         "-y",
         "-i",
