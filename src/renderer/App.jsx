@@ -1,4 +1,5 @@
 import React, { useCallback, useReducer } from "react";
+import "./app.css";
 import { AppLayout } from "./AppLayout";
 import { ConvertProgress } from "./ConvertProgress";
 import {
@@ -6,7 +7,6 @@ import {
   appReducer,
   chooseFilesAction,
   chooseOutputDirAction,
-  submit,
   reset,
   convert
 } from "./appReducer";
@@ -15,7 +15,7 @@ import { UploadForm } from "./UploadForm";
 
 export function App({ ffmpegService }) {
   const [state, dispatch] = useReducer(appReducer, initialState);
-  const { step } = state;
+  const { step, files = [], outputDir } = state;
   const onChooseFiles = useCallback(e => {
     dispatch(chooseFilesAction({ files: e.currentTarget.files }));
   }, []);
@@ -42,6 +42,8 @@ export function App({ ffmpegService }) {
     state.step !== 3 ? (
       <UploadForm
         step={step}
+        selectedFiles={files}
+        outputDir={outputDir}
         onChooseFiles={onChooseFiles}
         onChooseOutputDir={onChooseOutputDir}
         onSubmit={onSubmit}

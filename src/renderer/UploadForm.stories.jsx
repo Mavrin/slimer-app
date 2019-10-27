@@ -3,6 +3,17 @@ import { storiesOf } from "@storybook/react";
 
 import { UploadForm } from "./UploadForm";
 
-storiesOf(`UploadForm`, module).add(`default`, () => {
-  return <UploadForm />;
-});
+const files = [
+  {
+    name: "Promo",
+    path: "/user/Promo"
+  }
+];
+
+storiesOf(`UploadForm`, module)
+  .add(`step 1`, () => {
+    return <UploadForm step={1} />;
+  })
+  .add(`step 2`, () => {
+    return <UploadForm step={2} selectedFiles={files} />;
+  });

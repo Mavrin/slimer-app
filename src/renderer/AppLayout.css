@@ -1,0 +1,11 @@
+.app {
+  display: grid;
+}
+
+.main {
+  padding-top: 32px;
+}
+
+.logo {
+  margin: -28px;
+}

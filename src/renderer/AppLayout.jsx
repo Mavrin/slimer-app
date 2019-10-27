@@ -1,14 +1,14 @@
 import React from "react";
-import "./app.css";
+import styles from "./AppLayout.css";
 import src from "./icon.svg";
 export function AppLayout({ header, content }) {
   return (
-    <div className="app">
+    <div className={styles.app}>
       <header>
-        <img src={src} alt="" />
+        <img className={styles.logo} src={src} alt="" />
         {header}
       </header>
-      <main>{content}</main>
+      <main className={styles.main}>{content}</main>
       <footer />
     </div>
   );

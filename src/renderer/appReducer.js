@@ -15,7 +15,7 @@ export const chooseOutputDirAction = payload => {
   return { type: CHOOSE_OUTPUT_DIR, payload };
 };
 
-const submit = payload => {
+export const submit = payload => {
   return { type: SUBMIT, payload };
 };
 
