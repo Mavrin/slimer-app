@@ -1,4 +1,5 @@
 import React, { useCallback, useReducer } from "react";
+import electron from "electron";
 import "./app.css";
 import { AppLayout } from "./AppLayout";
 import { ConvertProgress } from "./ConvertProgress";
@@ -13,14 +14,28 @@ import {
 import { Header } from "./Header";
 import { UploadForm } from "./UploadForm";
 
-export function App({ ffmpegService }) {
+export function App({ ffmpegService, fileService }) {
   const [state, dispatch] = useReducer(appReducer, initialState);
   const { step, files = [], outputDir } = state;
   const onChooseFiles = useCallback(e => {
-    dispatch(chooseFilesAction({ files: e.currentTarget.files }));
+    electron.remote.dialog
+      .showOpenDialog({ properties: ["openFile", "multiSelections"] })
+      .then(data => {
+        dispatch(
+          chooseFilesAction({
+            files: fileService.getFilesInfo({ paths: data.filePaths })
+          })
+        );
+      });
+    //dispatch(chooseFilesAction({ files: e.currentTarget.files }));
   }, []);
   const onChooseOutputDir = useCallback(e => {
-    dispatch(chooseOutputDirAction({ path: e.currentTarget.files[0].path }));
+    electron.remote.dialog
+      .showOpenDialog({ properties: ["openDirectory"] })
+      .then(data => {
+        dispatch(chooseOutputDirAction({ path: data.filePaths[0] }));
+      });
+    // dispatch(chooseOutputDirAction({ path: e.currentTarget.files[0].path }));
   }, []);
   const onSubmit = useCallback(
     e => {
@@ -37,7 +52,6 @@ export function App({ ffmpegService }) {
   const onReset = useCallback(() => {
     dispatch(reset({}));
   }, []);
-
   const content =
     state.step !== 3 ? (
       <UploadForm
@@ -51,7 +65,10 @@ export function App({ ffmpegService }) {
     ) : (
       <>
         <div className="step-final">
-          <ConvertProgress progress={state.convertProgress} />
+          <ConvertProgress
+            openFile={fileService.openFile}
+            progress={state.convertProgress}
+          />
           <button onClick={onReset} id="new" className="button" type="button">
             Convert more
           </button>
@@ -59,5 +76,11 @@ export function App({ ffmpegService }) {
         <div id="message" />
       </>
     );
-  return <AppLayout content={content} header={<Header step={state.step} />} />;
+  return (
+    <AppLayout
+      onChooseFiles={onChooseFiles}
+      content={content}
+      header={<Header step={state.step} />}
+    />
+  );
 }

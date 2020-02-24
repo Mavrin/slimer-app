@@ -1,25 +1,37 @@
 import React from "react";
-export function ConvertProgress({ progress }) {
+import { Card } from "antd";
+export function ConvertProgress({ progress, openFile }) {
   const files = Object.entries(progress);
   if (!files.length) {
     return null;
   }
+  console.log(files);
   return files.map(([path, value]) => {
     const { progress, error, success } = value;
     if (error) {
       return (
-        <div key={path}>
-          {path} - {error}
-        </div>
+        <Card key={path}>
+          <div key={path}>
+            {path} - {error}
+          </div>
+        </Card>
       );
     }
     if (success) {
-      return <div key={path}>{path} - done</div>;
+      return (
+        <Card key={path}>
+          <div onClick={() => openFile(path)} key={path}>
+            {path} - done
+          </div>
+        </Card>
+      );
     }
     return (
-      <div key={path}>
-        {path} - {progress}
-      </div>
+      <Card key={path}>
+        <div>
+          {path} - {progress}
+        </div>
+      </Card>
     );
   });
 }

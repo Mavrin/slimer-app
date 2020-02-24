@@ -38,7 +38,7 @@ class FFMPEGService {
         "-map_metadata",
         "-1",
         "-c:a",
-        "libfdk_aac",
+        "aac",
         "-c:v",
         "libx264",
         "-crf",

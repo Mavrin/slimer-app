@@ -40,16 +40,13 @@ export function UploadForm({
       <div className={cx(`step-2`, { [styles.hidden]: step !== 2 })}>
         <FilesList files={selectedFiles} />
         {outputDir}
-        <label className={cx(styles.button, styles.label)}>
+        <button
+          onClick={onChooseOutputDir}
+          className={cx(styles.button)}
+          type="button"
+        >
           Output directory &hellip;
-          <input
-            onChange={onChooseOutputDir}
-            id="outputDir"
-            className={cx(styles.input)}
-            webkitdirectory="true"
-            type="file"
-          />
-        </label>
+        </button>
         <div className={cx(styles.convert)}>
           <button className={cx(styles.button)} type="submit">
             Convert

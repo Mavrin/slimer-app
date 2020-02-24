@@ -94,7 +94,7 @@ export const appReducer = (state, { type, payload }) => {
       return {
         ...state,
         step: 3,
-        convertProgress: payload
+        convertProgress: {}
       };
     }
     case CONVERT_CHANGE_PROGRESS: {
