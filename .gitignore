@@ -68,3 +68,5 @@ ffmpeg-tmp
 icon-dist
 dist
 package
+prepared
+output

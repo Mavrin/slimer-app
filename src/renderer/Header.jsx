@@ -1,4 +1,5 @@
-import React from "react";
+import * as React from "react";
+import * as PropTypes from "prop-types";
 
 export function Header({ step }) {
   if (step === 1) {
@@ -20,3 +21,7 @@ export function Header({ step }) {
   }
   return null;
 }
+
+Header.propTypes = {
+  step: PropTypes.number
+};

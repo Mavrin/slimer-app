@@ -1,6 +1,5 @@
 const { spawn } = require("child_process");
 const path = require("path");
-const fs = require("fs");
 const execPromise = require("../utils/execPromise");
 
 function getWithExt(name) {
@@ -9,7 +8,7 @@ function getWithExt(name) {
 
 function getFfmpegPath() {
   const pathTo = process.env.PATH_TO_FFMPEG;
-  const internalFfmpeg = pathTo
+  return pathTo
     ? pathTo
     : path.join(
         __dirname,
@@ -17,7 +16,6 @@ function getFfmpegPath() {
         "app.asar.unpacked/ffmpeg/bin",
         getWithExt("ffmpeg")
       );
-  return internalFfmpeg;
 }
 
 class FFMPEGService {

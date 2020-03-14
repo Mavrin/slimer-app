@@ -1,15 +1,24 @@
 .app {
-  display: grid;
+  display: flex;
+}
+
+.title {
+  display: none;
+}
+.headerControls {
+  align-self: flex-end;
 }
 
 .main {
-  padding-top: 32px;
+  padding-top: 48px;
 }
 
 .logo {
   margin: -28px;
 }
 
-.convert {
-  text-align: center;
+.header {
+  padding: 28px 40px;
+  display: flex;
+  justify-content: flex-end;
 }

@@ -1,4 +1,5 @@
-import React from "react";
+import * as React from "react";
+import * as PropTypes from "prop-types";
 import cx from "classnames";
 import styles from "./UploadForm.css";
 
@@ -14,6 +15,10 @@ function FilesList({ files }) {
     </ul>
   );
 }
+
+FilesList.propTypes = {
+  files: PropTypes.array
+};
 
 export function UploadForm({
   step,
@@ -56,3 +61,12 @@ export function UploadForm({
     </form>
   );
 }
+
+UploadForm.propTypes = {
+  step: PropTypes.number.isRequired,
+  onChooseFiles: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onChooseOutputDir: PropTypes.func.isRequired,
+  selectedFiles: PropTypes.array,
+  outputDir: PropTypes.string
+};

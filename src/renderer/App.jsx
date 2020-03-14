@@ -1,4 +1,5 @@
-import React, { useCallback, useReducer } from "react";
+import * as React from "react";
+import * as PropTypes from "prop-types";
 import electron from "electron";
 import "./app.css";
 import { AppLayout } from "./AppLayout";
@@ -14,10 +15,12 @@ import {
 import { Header } from "./Header";
 import { UploadForm } from "./UploadForm";
 
+const { useCallback, useReducer } = React;
+
 export function App({ ffmpegService, fileService }) {
   const [state, dispatch] = useReducer(appReducer, initialState);
   const { step, files = [], outputDir } = state;
-  const onChooseFiles = useCallback(e => {
+  const onChooseFiles = useCallback(() => {
     electron.remote.dialog
       .showOpenDialog({ properties: ["openFile", "multiSelections"] })
       .then(data => {
@@ -29,7 +32,7 @@ export function App({ ffmpegService, fileService }) {
       });
     //dispatch(chooseFilesAction({ files: e.currentTarget.files }));
   }, []);
-  const onChooseOutputDir = useCallback(e => {
+  const onChooseOutputDir = useCallback(() => {
     electron.remote.dialog
       .showOpenDialog({ properties: ["openDirectory"] })
       .then(data => {
@@ -84,3 +87,11 @@ export function App({ ffmpegService, fileService }) {
     />
   );
 }
+
+App.propTypes = {
+  ffmpegService: PropTypes.shape({}).isRequired,
+  fileService: PropTypes.shape({
+    getFilesInfo: PropTypes.func.isRequired,
+    openFile: PropTypes.func.isRequired
+  }).isRequired
+};

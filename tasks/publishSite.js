@@ -2,7 +2,7 @@ const ghpages = require("gh-pages");
 const { resolve } = require("path");
 const resolvePath = relativePath => resolve(__dirname, relativePath);
 
-const build = resolvePath("../site");
+const build = resolvePath("../prepared");
 
 async function publish() {
   return new Promise((resolve, reject) => {

@@ -58,14 +58,14 @@ module.exports = {
             use: [MiniCssExtractPlugin.loader, { loader: "css-loader" }]
           },
           {
-            test: /\.css$/,
+            test: /\.(css|pcss)$/,
             use: [
               MiniCssExtractPlugin.loader,
               { loader: "css-loader", options: { modules: true } }
             ]
           },
           {
-            test: /\.svg$/,
+            test: /\.(svg|png)$/,
             use: ["file-loader"]
           }
         ]

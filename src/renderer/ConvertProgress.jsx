@@ -1,11 +1,12 @@
-import React from "react";
+import * as React from "react";
 import { Card } from "antd";
+
 export function ConvertProgress({ progress, openFile }) {
   const files = Object.entries(progress);
   if (!files.length) {
     return null;
   }
-  console.log(files);
+
   return files.map(([path, value]) => {
     const { progress, error, success } = value;
     if (error) {

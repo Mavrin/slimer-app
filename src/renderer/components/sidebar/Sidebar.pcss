@@ -1,0 +1,40 @@
+:global(.ant-menu-inline) :global(.ant-menu-item).menuItem {
+  height: 44px;
+  font-size: 20px;
+  line-height: 44px;
+}
+
+:global(.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected) {
+  background: linear-gradient(
+      0deg,
+      rgba(10, 29, 59, 0.02),
+      rgba(10, 29, 59, 0.02)
+    ),
+    #fafafb;
+  border-radius: 12px;
+}
+
+:global(.ant-menu-inline .ant-menu-item-selected)::after {
+  display: none;
+}
+
+.menuItemLabel {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.sidebar {
+  padding: 24px 16px;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.02), 0 4px 4px rgba(0, 0, 0, 0.02),
+    0 0 2px rgba(0, 0, 0, 0.16);
+}
+
+.sidebar :global(.ant-layout-sider-children) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about {
+  height: 80px;
+}
