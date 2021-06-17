@@ -1,5 +1,5 @@
 {
-  "name": "rubberapp",
+  "name": "slimer-app",
   "version": "1.0.0",
   "description": "GUI for https://ffmpeg.org. Convert your video for the WEB",
   "main": "main.js",
@@ -15,14 +15,14 @@
     "icon-gen": "icon-gen -i src/icon.svg -o ./icon-dist -r",
     "format": "prettier --write \"**/*.js\"",
     "publishSite": "build-storybook -c .storybook -o prepared && node ./tasks/publishSite.js",
-    "archive": "cd package && zip -r ./Rubberapp.zip ./Rubberapp-darwin-x64",
+    "archive": "cd package && zip -r ./slimer-app.zip ./slimer-app-darwin-x64",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "eslint --ext=.js,.jsx ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mavrin/rubberapp.git"
+    "url": "git+https://github.com/Mavrin/slimer-app.git"
   },
   "keywords": [
     "ffmpeg",
@@ -33,14 +33,14 @@
   "author": "Konstantin Krivlenia <krivlenia@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Mavrin/rubberapp/issues"
+    "url": "https://github.com/Mavrin/slimer-app/issues"
   },
-  "homepage": "https://github.com/Mavrin/rubberapp#readme",
+  "homepage": "https://github.com/Mavrin/slimer-app#readme",
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/plugin-proposal-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-modules-commonjs": "^7.8.3",
-    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-env": "7.14.5",
     "@babel/preset-react": "^7.8.3",
     "@storybook/addon-actions": "^5.3.17",
     "@storybook/addon-links": "^5.3.17",

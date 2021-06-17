@@ -2,11 +2,20 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import { AppLayout } from "./AppLayout";
+import { FileCardsList } from "./FileCardsList";
 
 const files = [
   {
     name: "Promo",
     path: "/user/Promo"
+  },
+  {
+    name: "Promo 1",
+    path: "/user/Promo1"
+  },
+  {
+    name: "Promo 2",
+    path: "/user/Promo2"
   }
 ];
 
@@ -20,9 +29,9 @@ storiesOf(`App layout`, module)
       </>
     );
   })
-  .add(`step 1`, () => {
+  .add(`about`, () => {
     return <AppLayout step={1} />;
   })
-  .add(`step 2`, () => {
-    return <AppLayout step={2} selectedFiles={files} />;
+  .add(`file cards`, () => {
+    return <AppLayout content={<FileCardsList files={files} />} />;
   });
