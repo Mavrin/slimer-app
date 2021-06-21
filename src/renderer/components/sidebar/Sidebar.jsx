@@ -4,7 +4,7 @@ import cx from "classnames";
 import { AllIcon } from "./AllIcon";
 import { QueueIcon } from "./QueueIcon";
 import { About } from "./About";
-import styles from "./Sidebar.pcss";
+import styles from "./Sidebar.module.pcss";
 
 const { Sider } = Layout;
 const menuItemLabel = cx("nav-text", styles.menuItemLabel);
@@ -15,7 +15,7 @@ export function Sidebar() {
       className={styles.sidebar}
       theme="light"
       width={266}
-      onBreakpoint={broken => {
+      onBreakpoint={(broken) => {
         console.log(broken);
       }}
       onCollapse={(collapsed, type) => {

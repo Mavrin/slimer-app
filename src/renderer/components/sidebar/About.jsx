@@ -1,6 +1,6 @@
 import * as React from "react";
 import logoSrc from "../../logo.png";
-import styles from "./About.pcss";
+import styles from "./About.module.pcss";
 
 export function About() {
   return (

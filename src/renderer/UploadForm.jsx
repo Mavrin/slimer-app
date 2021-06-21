@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 import cx from "classnames";
-import styles from "./UploadForm.css";
+import styles from "./UploadForm.module.css";
 
 function FilesList({ files }) {
   if (files.length < 1) {
@@ -17,7 +17,7 @@ function FilesList({ files }) {
 }
 
 FilesList.propTypes = {
-  files: PropTypes.array
+  files: PropTypes.array,
 };
 
 export function UploadForm({
@@ -26,7 +26,7 @@ export function UploadForm({
   onSubmit,
   onChooseOutputDir,
   selectedFiles = [],
-  outputDir
+  outputDir,
 }) {
   return (
     <form onSubmit={onSubmit} id="form">
@@ -68,5 +68,5 @@ UploadForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChooseOutputDir: PropTypes.func.isRequired,
   selectedFiles: PropTypes.array,
-  outputDir: PropTypes.string
+  outputDir: PropTypes.string,
 };

@@ -28,7 +28,7 @@ class FFMPEGService {
   }
   async convert(file, outputDir = "output/") {
     const { name } = path.parse(file);
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       const ffmpeg = spawn(this.pathToBin, [
         "-y",
         "-i",
@@ -51,7 +51,7 @@ class FFMPEGService {
         "+faststart",
         "-vf",
         "scale=trunc(iw/2)*2:trunc(ih/2)*2",
-        `${outputDir}/${name}.mp4`
+        `${outputDir}/${name}.mp4`,
       ]);
 
       return resolve(ffmpeg);
@@ -59,5 +59,5 @@ class FFMPEGService {
   }
 }
 module.exports = {
-  FFMPEGService
+  FFMPEGService,
 };

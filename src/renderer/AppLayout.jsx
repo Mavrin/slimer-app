@@ -2,7 +2,7 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 import "antd/dist/antd.css";
 import { Layout, Button } from "antd";
-import styles from "./AppLayout.css";
+import styles from "./AppLayout.module.css";
 import { Sidebar } from "./components/sidebar/Sidebar";
 const { Content } = Layout;
 
@@ -36,5 +36,5 @@ export function AppLayout(
 AppLayout.propTypes = {
   header: PropTypes.node,
   content: PropTypes.node,
-  onChooseFiles: PropTypes.func
+  onChooseFiles: PropTypes.func,
 };

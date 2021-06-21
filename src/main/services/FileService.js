@@ -7,12 +7,12 @@ function getName(path) {
 
 module.exports = {
   getFilesInfo({ paths }) {
-    return paths.map(path => ({
+    return paths.map((path) => ({
       name: getName(path),
-      path
+      path,
     }));
   },
   openFile(path) {
     return shell.openItem(path);
-  }
+  },
 };

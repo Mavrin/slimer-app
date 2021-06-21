@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 import { FileCard } from "./FileCard";
-import styles from "./FileCardsList.pcss";
+import styles from "./FileCardsList.module.pcss";
 
 export function FileCardsList({
   files,
   convertFile = () => {},
-  openFile = () => {}
+  openFile = () => {},
 }) {
   if (files.length === 0) {
     return null;
@@ -33,8 +33,8 @@ FileCardsList.propTypes = {
     path: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     progress: PropTypes.number.isRequired,
-    status: PropTypes.oneOf(["pending", "ready", "processing"]).isRequired
+    status: PropTypes.oneOf(["pending", "ready", "processing"]).isRequired,
   }).isRequired,
   convertFile: PropTypes.func,
-  openFile: PropTypes.func
+  openFile: PropTypes.func,
 };

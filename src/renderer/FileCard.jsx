@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import styles from "./FileCard.pcss";
+import styles from "./FileCard.module.pcss";
 
 export function FileCard({ name, path, status }) {
   return (
@@ -13,5 +13,5 @@ export function FileCard({ name, path, status }) {
 FileCard.propTypes = {
   path: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  status: PropTypes.oneOf(["pending", "ready", "processing"]).isRequired
+  status: PropTypes.oneOf(["pending", "ready", "processing"]).isRequired,
 };

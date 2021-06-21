@@ -1,5 +1,5 @@
 const path = require("path");
-const nodeExternals = require("webpack-node-externals");
+// const nodeExternals = require("webpack-node-externals");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
@@ -7,20 +7,20 @@ let antCss = require.resolve("antd/dist/antd.css");
 module.exports = {
   target: "electron-renderer",
   entry: {
-    app: "./src/index.jsx"
+    app: "./src/index.jsx",
   },
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "./dist/assets"),
-    publicPath: "assets/"
+    publicPath: "assets/",
   },
   node: {
     __dirname: false,
-    __filename: false
+    __filename: false,
   },
-  externals: [nodeExternals({ whitelist: ["antd/dist/antd.css"] })],
+  // externals: [nodeExternals({ allowlist: ["antd/dist/antd.css"] })],
   resolve: {
-    extensions: [`.js`, `.jsx`, `.css`]
+    extensions: [`.js`, `.jsx`, `.css`],
   },
   module: {
     rules: [
@@ -38,51 +38,53 @@ module.exports = {
                       require.resolve(`@babel/preset-env`),
                       {
                         targets: {
-                          chrome: "58"
+                          chrome: "58",
                         },
                         modules: false,
                         useBuiltIns: false,
-                        loose: true
-                      }
+                        loose: true,
+                      },
                     ],
-                    require.resolve(`@babel/preset-react`)
+                    require.resolve(`@babel/preset-react`),
                   ],
-                  cacheDirectory: true
-                }
-              }
-            ]
+                  cacheDirectory: true,
+                },
+              },
+            ],
           },
           {
             test: /\.css$/,
             include: [antCss],
-            use: [MiniCssExtractPlugin.loader, { loader: "css-loader" }]
+            use: [MiniCssExtractPlugin.loader, { loader: "css-loader" }],
           },
           {
-            test: /\.(css|pcss)$/,
+            test: /\.module\.(css|pcss)$/,
             use: [
               MiniCssExtractPlugin.loader,
-              { loader: "css-loader", options: { modules: true } }
-            ]
+              { loader: "css-loader", options: { modules: true } },
+            ],
           },
           {
             test: /\.(svg|png)$/,
-            use: ["file-loader"]
-          }
-        ]
-      }
-    ]
+            use: ["file-loader"],
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({}),
-    new CopyPlugin([
-      {
-        from: "./index.html",
-        to: "../"
-      },
-      {
-        from: "./main.js",
-        to: "../"
-      }
-    ])
-  ]
+    new CopyPlugin({
+      patterns: [
+        {
+          from: "./index.html",
+          to: "../",
+        },
+        {
+          from: "./main.js",
+          to: "../",
+        },
+      ],
+    }),
+  ],
 };

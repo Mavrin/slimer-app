@@ -6,8 +6,8 @@ import { UploadForm } from "./UploadForm";
 const files = [
   {
     name: "Promo",
-    path: "/user/Promo"
-  }
+    path: "/user/Promo",
+  },
 ];
 
 storiesOf(`UploadForm`, module)

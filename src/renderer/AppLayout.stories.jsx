@@ -7,20 +7,20 @@ import { FileCardsList } from "./FileCardsList";
 const files = [
   {
     name: "Promo",
-    path: "/user/Promo"
+    path: "/user/Promo",
   },
   {
     name: "Promo 1",
-    path: "/user/Promo1"
+    path: "/user/Promo1",
   },
   {
     name: "Promo 2",
-    path: "/user/Promo2"
-  }
+    path: "/user/Promo2",
+  },
 ];
 
 storiesOf(`App layout`, module)
-  .addDecorator(storyFn => {
+  .addDecorator((storyFn) => {
     const style = "#root{height: 100%}";
     return (
       <>
